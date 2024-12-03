@@ -32,3 +32,20 @@ def find_delta(d, t, M, j):
 def alg_find_delta(d, t, M):
     # metodo wrapper per find_delta
     return find_delta(d, t, M, 0)
+
+def test_delta(d,t,M):
+    running = True
+    time = t[0]
+    i = 1
+    n = len(t)
+    while i < n:
+        # eseguo il cliente (i-1)-esimo
+        time += d
+
+        if time <= t[i]:
+            time = t[i]
+        
+        i+=1
+    time += d
+    return time
+    
