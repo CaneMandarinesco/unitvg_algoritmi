@@ -1,0 +1,30 @@
+procedura controlla_sovrapposizione(s1, s2):
+    ritorna quante monete si sovrappongono tra s1 e s2
+
+procedura ric_trova_sovrapposizioni(T, v, s):
+    dx = figlio_destro(v)
+    sx = figlio_sinstro(v)
+
+    controlla_sovrapposizione(v.sequenza, s)
+
+algoritmo calcola_max_score(S, n, k):
+    // O(n log n)
+    Sia T un albero AVL, dove ogni nodo v_i contiene: 
+        una sequenza s_i
+        un valore t_max = max{t_i delle sequenze nei nodi nel sotto-albero con radice v_i}
+    Nell'albero la chiave e' il valore s_i, ossia l'istante di inizio della sequenza
+
+    // O(n log n)
+    Sia Q una lista di sequenze prese da S ordinate usando il valore v_i, dal piu grande al piu piccolo
+
+    // prendi tutte le monete della sequenza con v_i massimo 
+    score = (Q[0].t - Q[0].s) * Q[0].v
+
+    // -- O(n log n) -- si spera
+    // O(n)
+    for i=1 to n:
+        // O(log n)
+        Inserisci in T la sequenza Q[i], e aggiorna i valori t_max di ogni nodo 
+
+        ric_trova_sovrapposizioni(T, v, Q[i]):
+        
